@@ -50,15 +50,40 @@ class BPlusTree:
             if type(node) != Leaf and type(node) != Node:
                 break
 
-    def items(self):
+    def leftmost_leaf(self):
         leaf = self.root
         while type(leaf) != Leaf:
             leaf = leaf.children[0]
+        return leaf
+
+    def items(self):
+        leaf = self.leftmost_leaf()
         items = []
         while leaf is not None:
-            items.extend(leaf.children)
+            pairs = list(leaf.items())
+            items.extend(pairs)
             leaf = leaf.next
         return items
+
+    def keys(self):
+        leaf = self.leftmost_leaf()
+        ks = []
+        while leaf is not None:
+            ks.extend(leaf.keys)
+            leaf = leaf.next
+        return ks
+
+    def values(self):
+        leaf = self.leftmost_leaf()
+        vals = []
+        while leaf is not None:
+            for elem in leaf.children:
+                if type(elem) == list:
+                    vals.extend(elem)
+                else:
+                    vals.append(elem)
+            leaf = leaf.next
+        return vals
 
     def height(self):
         node = self.root

@@ -107,6 +107,8 @@ class Leaf:
             node = node.next
         return items
 
+    def items(self):
+        return zip(self.keys, self.children)
 
 class Node:
     def __init__(self, previous_node, next_node, keys, children, b_factor, parent=None):
