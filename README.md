@@ -1,6 +1,11 @@
 # BPlusTree
 A memory B+tree for Python3.
 
+## Features
+- [x] store as list for same key
+- [x] range search
+- [ ] delete key
+
 ## QuickStart
 Copy the folder `bplustree` to your project.
 
