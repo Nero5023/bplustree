@@ -96,10 +96,7 @@ class BPlusTree:
 
 if __name__ == '__main__':
     t = BPlusTree(32)
-    # nums = [40,33,43,68,37,7,80,72,92,17,5,75]
     nums = [55,44,65,16,80,74,14,19,95,36,2,90,74,94,27,89,85]
     for x in nums:
         t.insert(x, x)
-    # t.insert(22, 22)
-    # t.insert(33, 33)
     print(t.items())
