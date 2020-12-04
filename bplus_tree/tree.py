@@ -25,7 +25,7 @@ class BPlusTree:
     def range_search(self, notation, cmp_key):
         notation = notation.strip()
         if notation not in [">", "<", ">=", "<="]:
-            raise Exception("Nonsupport notation: {}. Only '>' '<' '>=' '<=' are supported")
+            raise Exception("Nonsupport notation: {}. Only '>' '<' '>=' '<=' are supported".format(notation))
         if notation == '>':
             return self.root.find_right(cmp_key, False)
         if notation == '>=':
@@ -34,6 +34,16 @@ class BPlusTree:
             return self.root.find_left(cmp_key, False)
         if notation == '<=':
             return self.root.find_left(cmp_key, True)
+
+    def search(self, notation, cmp_key):
+        notation = notation.strip()
+        if notation not in [">", "<", ">=", "<=", "==", "!="]:
+            raise Exception("Nonsupport notation: {}. Only '>' '<' '>=' '<=' '==' '!=' are supported".format(notation))
+        if notation == '==':
+            return self.get(cmp_key)
+        if notation == '!=':
+            return self.root.find_left(cmp_key, False) + self.root.find_right(cmp_key, False)
+        return self.range_search(notation, cmp_key)
 
     def show(self):
         layer = 0
