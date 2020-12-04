@@ -55,6 +55,25 @@ range search compare with `cmp_key`
 ['c', '3', 'a', 'b']
 ```
 
+### Search
+```
+search(self, notation, cmp_key)
+```
+search compare with `cmp_key` 
+
+`notation` supports '>' '<' '>=' '<=' '!=' '=='
+
+```python
+>>> t.search('==', 3)
+['c']
+>>>  t.search('!=', 3)
+['Hello World!', '3', 'a', 'b']
+>>> t.search('>', 3)
+['3', 'a', 'b']
+>>> t.search('>=', 3)
+['c', '3', 'a', 'b']
+```
+
 ### Keys, values and item pairs
 ```python
 >>> t.keys()
