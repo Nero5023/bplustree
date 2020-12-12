@@ -7,7 +7,7 @@ A memory B+tree for Python3.
 - [ ] delete key
 
 ## QuickStart
-Copy the folder `bplustree` to your project.
+Copy the folder `bplus_tree` to your project.
 
 ### Create a BPlusTree object
 ```python
