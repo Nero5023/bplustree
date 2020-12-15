@@ -40,7 +40,11 @@ class BPlusTree:
         if notation not in [">", "<", ">=", "<=", "==", "!="]:
             raise Exception("Nonsupport notation: {}. Only '>' '<' '>=' '<=' '==' '!=' are supported".format(notation))
         if notation == '==':
-            return self.get(cmp_key)
+            res = self.get(cmp_key)
+            if res is None:
+                return []
+            else:
+                return res
         if notation == '!=':
             return self.root.find_left(cmp_key, False) + self.root.find_right(cmp_key, False)
         return self.range_search(notation, cmp_key)
